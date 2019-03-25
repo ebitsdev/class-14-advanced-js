@@ -1,0 +1,26 @@
+{
+  "name": "class-14-adv",
+  "version": "1.0.0",
+  "description": "Demonstrate Nodejs",
+  "main": "testnode.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ebitsdev/class-14-advanced-js.git"
+  },
+  "keywords": [
+    "Node",
+    "JavaScript"
+  ],
+  "author": "Emmanuel Bamba",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ebitsdev/class-14-advanced-js/issues"
+  },
+  "homepage": "https://github.com/ebitsdev/class-14-advanced-js#readme",
+  "dependencies": {
+    "chart": "^0.1.2"
+  }
+}

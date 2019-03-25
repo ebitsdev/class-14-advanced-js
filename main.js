@@ -42,3 +42,62 @@ function sayHelloIn(lang){
 }
 let greeting = sayHelloIn('Konon')
 greeting()
+
+let elList, addLink, nEl, nText, counter, listItems
+elList = document.getElementById('list')
+addLink = document.querySelector('a')
+counter = document.getElementById('counter')
+
+function addItem(e){
+  e.preventDefault()
+  nEl = document.createElement('li')
+  nText = document.createTextNode('New list item')
+  nEl.appendChild(nText)
+  elList.appendChild(nEl)
+}
+let mArr = []
+function updateCount(){
+  listItems = elList.getElementsByTagName('li').length
+  counter.innerText = listItems
+  mArr.push(nText.textContent)
+  console.log(mArr)
+  addToLocalStorage()
+  getLocalStorageContent()
+}
+function addToLocalStorage(){
+  localStorage.setItem('elements', JSON.stringify(mArr))
+}
+let oEl = document.createElement('ol')
+function getLocalStorageContent(){
+  let allEl = localStorage.getItem('elements')
+  let saveItems = JSON.parse(allEl)
+  let liEl = document.createElement('li')
+  oEl.appendChild(liEl)
+  saveItems.forEach(value => {
+    liEl.textContent = value
+    console.log(value)
+  })
+  document.querySelector('body').appendChild(oEl)
+}
+// Calling the eventHandler addItem from above when the link is clicked
+addLink.addEventListener('click', addItem, false)
+
+elList.addEventListener('DOMNodeInserted', updateCount, false)
+
+function classRoom(){
+  let instructors = ['Emmanuel', 'Zach']
+  return {
+    getInstructor : function(){
+      return instructors
+    },
+    addInstructor : function(name){
+      instructors.push(name)
+      return instructors
+    }
+  }
+}
+let course = classRoom()
+course.addInstructor('Bamba')
+let course2 = classRoom()
+course2.addInstructor('Mei')
+console.log(course2.getInstructor())
