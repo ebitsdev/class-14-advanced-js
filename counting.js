@@ -24,15 +24,16 @@ function addMultiValueToLocalStorage(){
 
 let olEl = document.createElement('ol')
 let olEl2 = document.createElement('ol')
+
 function generateList(imgListCount){
     if (localStorage){
-        let clickedValues = localStorage.getItem('elementsclicked')
+        let storedValues = localStorage.getItem('elementsclicked')
         imgListCount.forEach(storedValue => {
             let li = document.createElement('li')
             li.textContent = storedValue
             olEl.appendChild(li)
         })
-        console.log(JSON.parse(clickedValues))
+        console.log(JSON.parse(storedValues))
     }
     imgListCount.forEach(function(clickCount){
         let liElement = document.createElement('li')
@@ -40,16 +41,22 @@ function generateList(imgListCount){
         liElement.textContent = clickCount
     })
 }
+// Generate an ordered list from the localstorage data
 function buildListFromLocalStorageContent(){
     if (localStorage){
-        let clickedValues = localStorage.getItem('elementsclicked')
-        let temvalues = JSON.parse(clickedValues)
-        temvalues.forEach(storedValue => {
+        //Get the stored data from the localstorage
+        let storedValues = localStorage.getItem('elementsclicked')
+        //Parse the values that were read from the localstorage
+        let parsedValues = JSON.parse(storedValues)
+        //Use the parsed values from LS to generate list items
+        parsedValues.forEach(storedValue => {
+            // Create a list item to be appended to the ordered list olEl2
             let li = document.createElement('li')
+            //Set the text of the list item to the storedValue
             li.textContent = storedValue
+            //Append the newly created list item to the ordered list olEl2
             olEl2.appendChild(li)
         })
-        console.log(JSON.parse(clickedValues))
     }
 }
 //Append the list item from the localstorage to the second ordered list
@@ -60,7 +67,7 @@ document.body.appendChild(olEl)
 buildListFromLocalStorageContent()
 
 let h2 = document.createElement('h2')
-// Get values from 
+// Get values from
 function getValueFromLocalStorage(){
     let storedValue = localStorage.getItem('countkey')
     document.body.appendChild(h2)
