@@ -1,6 +1,7 @@
 img {
     width: 20%;
     border-radius: 8px;
+    padding: 2px;
 }
 td {
     border: solid 1px olive;
